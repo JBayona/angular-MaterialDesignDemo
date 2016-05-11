@@ -13,7 +13,7 @@ angular.module('angularMaterialDesignDemoApp', [
 .run(function(){
   console.log("The app is ready!");
 })
-  .config(function($mdIconProvider) {
+  .config(function($mdIconProvider, $mdThemingProvider) {
     $mdIconProvider
       .iconSet('action', '../assets/iconsets/action-icons.svg', 24)
       .iconSet('alert', '../assets/iconsets/alert-icons.svg', 24)
@@ -32,6 +32,10 @@ angular.module('angularMaterialDesignDemoApp', [
       .iconSet('social', '../assets/iconsets/social-icons.svg', 24)
       .iconSet('toggle', '../assets/iconsets/toggle-icons.svg', 24)
       .iconSet('avatar', '../assets/iconsets/avatar-icons.svg', 128);
+
+      $mdThemingProvider.theme('default')
+        .primaryPalette('brown')
+        .accentPalette('red')
   })
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider

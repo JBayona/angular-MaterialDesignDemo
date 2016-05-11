@@ -1,10 +1,13 @@
-<md-toolbar>
+<md-toolbar layout="row"> <!-- El layout row nos permite poner los elementos en el mismo row -->
+  <md-button class="menu" ng-click="toggleList()" hide-gt-sm aria-label="Menu">
+    <md-icon md-svg-icon="assets/icons/menu.svg"></md-icon>
+  </md-button>
   <h1>Angular Material Starter</h1>
 </md-toolbar>
 
 <div class="container" layout="row" flex>
-  <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
-    <md-list>
+  <md-sidenav md-is-locked-open="$mdMedia('gt-sm')" class="md-whiteframe-4dp" md-component-id="left">
+    <md-list ng-click="toggleList()">
       <md-list-item ng-repeat="item in users.info">
         <md-button ng-click="selectedUser(item)">
           <md-icon md-svg-icon="avatar:{{item.avatar}}" class="avatar"></md-icon>
@@ -15,6 +18,9 @@
   </md-sidenav>
   <md-content id="content" flex>
     <md-icon md-svg-icon="avatar:{{users.selectedUser.avatar || users.info[0].avatar}}" class="avatar"></md-icon>
+    <md-button class="share" md-no-link aria-label="Share" ng-click="share(users.selectedUser)">
+      <md-icon md-svg-icon="content:reply"></md-icon> 
+    </md-button>
     <h2>{{users.selectedUser.name || users.info[0].name }}</h2>
     <p>
       {{users.selectedUser.content || users.info[0].content }}
